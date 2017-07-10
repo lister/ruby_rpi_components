@@ -39,7 +39,7 @@ module RpiComponents
 
     # Take 7 measures, remove 2 max and min, and return the average of the 3 remaining measures
     def accurate_measure
-      Array.new(7){ sleep(50e-3); self.measure }.sort.slice(2..4).reduce(:+) / 3
+      Array.new(7){ sleep(50e-3); self.measure }.compact.sort.slice(2...-2).reduce(:+).to_f / 3
     end
 
   end
